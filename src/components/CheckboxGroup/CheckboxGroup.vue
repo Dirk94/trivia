@@ -1,5 +1,6 @@
 <script setup>
 import IconCheck from '@/components/icons/IconCheck.vue'
+import Checkbox from '@/components/CheckboxGroup/Checkbox.vue'
 
 defineProps({
   modelValue: {
@@ -11,6 +12,8 @@ defineProps({
     default: () => ([])
   }
 })
+
+defineEmits(['update:modelValue'])
 </script>
 <template>
   <div>
@@ -23,14 +26,7 @@ defineProps({
       :data-test-value="option.value"
       @click="$emit('update:modelValue', option.value)"
     >
-      <div
-        :class="[
-          $style.checkbox,
-          modelValue === option.value && $style.checkboxChecked
-        ]"
-      >
-        <IconCheck v-if="modelValue === option.value" :class="[$style.iconCheck]" />
-      </div>
+      <Checkbox :checked="modelValue === option.value" />
       {{ option.label }}
     </div>
   </div>
@@ -55,26 +51,5 @@ defineProps({
   box-shadow: 0 2px 10px var(--color-box-shadow);
   border: 1px solid var(--color-gray-400);
 
-}
-
-.checkbox {
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--color-text);
-  background: var(--color-white);
-  margin-right: 16px;
-  display: flex; justify-content: center;
-  align-items: center;
-}
-
-.checkboxChecked {
-  background: var(--color-input-active);
-  border-color: var(--color-input-active);
-}
-
-.iconCheck {
-  color: white;
-  width: 100%;
-  height: 100%;
 }
 </style>
