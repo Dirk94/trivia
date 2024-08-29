@@ -1,11 +1,14 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import AppLogo from '@/components/Logo.vue'
+import AppLogo from '@/components/AppLogo.vue'
+import LoadingOverlay from '@/components/LoadingOverlay.vue'
 </script>
 <template>
   <div :class="[$style.container]">
     <AppLogo />
     <RouterView />
+
+    <LoadingOverlay />
   </div>
 </template>
 <style module>

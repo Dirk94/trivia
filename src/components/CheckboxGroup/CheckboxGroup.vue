@@ -1,5 +1,5 @@
 <script setup>
-import IconCheck from '@/components/icons/IconCheck.vue'
+import IconCheck from '@/components/Icons/IconCheck.vue'
 import Checkbox from '@/components/CheckboxGroup/Checkbox.vue'
 
 defineProps({

@@ -1,6 +1,7 @@
 <script setup>
-import CheckboxGroup from '@/components/CheckboxGroup.vue'
+import CheckboxGroup from '@/components/CheckboxGroup/CheckboxGroup.vue'
 import { DIFFICULTY_EASY, DIFFICULTY_HARD, DIFFICULTY_MEDIUM, useQuizStore } from '@/stores/quiz.js'
+import AppButton from '@/components/AppButton.vue'
 
 const quizStore = useQuizStore()
 
@@ -19,6 +20,12 @@ const quizStore = useQuizStore()
         { value: DIFFICULTY_HARD, label: 'Hard 😵' },
       ]"
     />
+
+    <div :class="[$style.buttonContainer]">
+      <AppButton href="/play">
+        Start Quiz
+      </AppButton>
+    </div>
   </main>
 </template>
 <style module>
@@ -29,5 +36,11 @@ main {
 .intro {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 </style>
