@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { getQuestionsFromApi } from '@/app/triviaApi.js'
 import router from '@/router/index.js'
 import { spawnFullPageConfetti } from '@/app/confetti.js'
+import { getApiSessionTokenFromApiOrLocalStorage } from '@/app/tokenStorage.js'
 
 export const DIFFICULTY_EASY = 'easy'
 export const DIFFICULTY_MEDIUM = 'medium'
@@ -17,13 +18,13 @@ export const useQuizStore = defineStore('quiz', {
     difficulty: DIFFICULTY_EASY,
     questions: [],
     currentQuestionIndex: 0,
-
     quizState: STATE_ANSWERING_QUESTION
   }),
 
   actions: {
     async startNewQuiz () {
-      this.questions = await getQuestionsFromApi(this.difficulty)
+      const sessionToken = await getApiSessionTokenFromApiOrLocalStorage()
+      this.questions = await getQuestionsFromApi(this.difficulty, sessionToken)
       this.currentQuestionIndex = 0
       await router.push('/play')
     },
