@@ -31,4 +31,4 @@ npm run test:unit
 - Styled for 2 screens. Mobile (<1024px) and Desktop (>=1024px).
 - I wrote a few unit tests. I started on writing unit tests for the `/src/app` directory, but that required me to mock axios and at that point I already crossed the time limit, so I decided to leave that as it was, with no tests.
   - If this was a real life application I would test the main features with a few Cypress end-to-end tests.
-- Because of time constraints I've decided to "trust" the Trivia API HTML generated output. This is a XSS vulnerability, and should probably not be deployed in a real-life application. 
+- Because of time constraints I've decided to "trust" the Trivia API HTML generated output. This is a XXS vulnerability, and should probably not be deployed in a real-life application. 
