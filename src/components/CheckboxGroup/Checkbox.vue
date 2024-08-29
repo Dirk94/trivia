@@ -17,6 +17,7 @@ defineProps({
   >
     <IconCheck
       v-if="checked"
+      data-test-id="checked"
       :class="[$style.iconCheck]"
     />
   </div>

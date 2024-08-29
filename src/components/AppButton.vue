@@ -1,21 +1,7 @@
-<script setup>
-import { RouterLink } from 'vue-router'
-
-defineProps({
-  href: {
-    type: String,
-    default: ''
-  }
-})
-</script>
 <template>
-  <component
-    :is="href ? RouterLink : 'button'"
-    :to="href"
-    :class="$style.button"
-  >
+  <button :class="$style.button">
     <slot />
-  </component>
+  </button>
 </template>
 <style module>
 .button {

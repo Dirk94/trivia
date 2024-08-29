@@ -5,13 +5,13 @@ import CheckboxGroup from '@/components/CheckboxGroup/CheckboxGroup.vue'
 import AppButton from '@/components/AppButton.vue'
 import ProgressSlider from '@/components/ProgressSlider.vue'
 import router from '@/router/index.js'
-import { spawnFullPageConfetti } from '@/app/confetti.js'
 
 const quizStore = useQuizStore()
 
 const answer = ref('')
 
 onMounted(() => {
+  // If something went wrong with loading the questions, redirect the user back to the start screen
   if (quizStore.questions?.length <= 0) {
     router.push('/')
   }
@@ -86,9 +86,6 @@ main {
   opacity: 0.8;
 }
 
-.answerFeedbackContainer {
-  display: block;
-}
 .wrongAnswer {
   color: var(--color-danger);
   font-size: 20px;

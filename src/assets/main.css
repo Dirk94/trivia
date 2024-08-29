@@ -16,6 +16,10 @@
 }
 
 :root {
+    /*
+      I'm pretending a bit here. I'm assuming there is a nice design document with colors somewhere
+      that I'm implementing here.
+    */
     --color-text: #2d2323;
 
     --color-primary: rgb(79, 117, 254);

@@ -2,7 +2,6 @@
 import CheckboxGroup from '@/components/CheckboxGroup/CheckboxGroup.vue'
 import { DIFFICULTY_EASY, DIFFICULTY_HARD, DIFFICULTY_MEDIUM, useQuizStore } from '@/stores/quiz.js'
 import AppButton from '@/components/AppButton.vue'
-import router from '@/router/index.js'
 
 const quizStore = useQuizStore()
 
@@ -23,12 +22,7 @@ const quizStore = useQuizStore()
     />
 
     <div :class="[$style.buttonContainer]">
-      <AppButton
-        @click="async () => {
-          await quizStore.loadQuestionsForNewQuiz()
-          await router.push('/play')
-        }"
-      >
+      <AppButton @click="quizStore.startNewQuiz()">
         Start Quiz
       </AppButton>
     </div>

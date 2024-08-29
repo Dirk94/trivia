@@ -4,9 +4,7 @@ import { useQuizStore } from '@/stores/quiz.js'
 // Wrap the Axios "get" function with some boilerplate for:
 // - a loading state
 // - a generic error catcher
-export const doGetRequest = async (url, params = {}) => {
-  const quizStore = useQuizStore()
-
+export const doGetRequest = async (url, params = {}, quizStore = useQuizStore()) => {
   try {
     quizStore.isLoading = true
     const response = await axios.get(url, { params })

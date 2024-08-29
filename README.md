@@ -28,5 +28,5 @@ npm run test:unit
 
 - I didn't use the boilerplate startup template, because there were errors with outdated Eslint configurations. Creating a new default startup Vue project was easier.
 - Styled for 2 screens. Mobile (<1024px) and Desktop (>=1024px).
-- 
+- I wrote a few unit tests. I started on writing unit tests for the /src/app directory, but that required me to mock axios and at that point I already crossed the time limit, so I decided to leave that as it was, with no tests.
 

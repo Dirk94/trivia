@@ -22,9 +22,10 @@ export const useQuizStore = defineStore('quiz', {
   }),
 
   actions: {
-    async loadQuestionsForNewQuiz () {
+    async startNewQuiz () {
       this.questions = await getQuestionsFromApi(this.difficulty)
       this.currentQuestionIndex = 0
+      await router.push('/play')
     },
 
     submitAnswer (answer) {
