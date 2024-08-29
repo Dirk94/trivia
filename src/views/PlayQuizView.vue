@@ -1,23 +1,21 @@
 <script setup>
-import { computed, ref } from 'vue'
-import { useQuizStore } from '@/stores/quiz.js'
+import { onMounted, ref } from 'vue'
+import { STATE_ANSWERING_QUESTION, STATE_WRONG_ANSWER, useQuizStore } from '@/stores/quiz.js'
 import CheckboxGroup from '@/components/CheckboxGroup/CheckboxGroup.vue'
 import AppButton from '@/components/AppButton.vue'
 import ProgressSlider from '@/components/ProgressSlider.vue'
+import router from '@/router/index.js'
+import { spawnFullPageConfetti } from '@/app/confetti.js'
 
 const quizStore = useQuizStore()
 
 const answer = ref('')
 
-const onSubmitAnswer = () => {
-  if (answer.value === quizStore.currentCorrectAnswer) {
-    // todo
-  } else {
-    // todo
+onMounted(() => {
+  if (quizStore.questions?.length <= 0) {
+    router.push('/')
   }
-
-  quizStore.gotoNextQuestion()
-}
+})
 </script>
 <template>
   <main>
@@ -41,9 +39,23 @@ const onSubmitAnswer = () => {
     />
 
     <div :class="[$style.buttonContainer]">
-      <AppButton @click="onSubmitAnswer">
+      <AppButton v-if="quizStore.quizState === STATE_ANSWERING_QUESTION" @click="quizStore.submitAnswer(answer)">
         Submit Answer
       </AppButton>
+      <div v-else>
+        <div v-if="quizStore.quizState === STATE_WRONG_ANSWER" :class="[$style.wrongAnswer]">
+          Wrong answer!🙅🏻‍♂️
+        </div>
+        <div v-else :class="[$style.rightAnswer]">
+          Right answer!🤩
+        </div>
+
+        <div :class="[$style.buttonContainer]">
+          <AppButton @click="quizStore.gotoNextQuestion()">
+            Continue
+          </AppButton>
+        </div>
+      </div>
     </div>
   </main>
 </template>
@@ -72,5 +84,19 @@ main {
   margin-bottom: 4px;
   text-align: center;
   opacity: 0.8;
+}
+
+.answerFeedbackContainer {
+  display: block;
+}
+.wrongAnswer {
+  color: var(--color-danger);
+  font-size: 20px;
+  font-weight: bold;
+}
+.rightAnswer {
+  color: var(--color-success);
+  font-size: 20px;
+  font-weight: bold;
 }
 </style>

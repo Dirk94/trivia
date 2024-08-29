@@ -21,6 +21,8 @@
     --color-primary: rgb(79, 117, 254);
     --color-primary-dark: #254cda;
     --color-secondary: #FF7F11;
+    --color-danger: #e53f37;
+    --color-success: #0c9f64;
     --color-white: #ffffff;
     --color-input-active: #4376f9;
     --color-box-shadow: #b4a6a640;
