@@ -1,6 +1,6 @@
 <script setup>
-import CheckboxGroup from "@/components/CheckboxGroup.vue";
-import {DIFFICULTY_EASY, DIFFICULTY_HARD, DIFFICULTY_MEDIUM, useQuizStore} from "@/stores/quiz.js";
+import CheckboxGroup from '@/components/CheckboxGroup.vue'
+import { DIFFICULTY_EASY, DIFFICULTY_HARD, DIFFICULTY_MEDIUM, useQuizStore } from '@/stores/quiz.js'
 
 const quizStore = useQuizStore()
 
@@ -14,12 +14,11 @@ const quizStore = useQuizStore()
     <CheckboxGroup
       v-model="quizStore.difficulty"
       :options="[
-          { value: DIFFICULTY_EASY, label: 'Easy 💁🏻‍♂️' },
-          { value: DIFFICULTY_MEDIUM, label: 'Medium 😎' },
-          { value: DIFFICULTY_HARD, label: 'Hard 😵' },
+        { value: DIFFICULTY_EASY, label: 'Easy 💁🏻‍♂️' },
+        { value: DIFFICULTY_MEDIUM, label: 'Medium 😎' },
+        { value: DIFFICULTY_HARD, label: 'Hard 😵' },
       ]"
-    >
-    </CheckboxGroup>
+    />
   </main>
 </template>
 <style module>

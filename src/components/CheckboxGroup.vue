@@ -1,10 +1,10 @@
 <script setup>
-import IconCheck from "@/components/icons/IconCheck.vue";
+import IconCheck from '@/components/icons/IconCheck.vue'
 
 defineProps({
   modelValue: {
     type: String,
-    default: null,
+    default: null
   },
   options: {
     type: Array,
@@ -18,18 +18,18 @@ defineProps({
       v-for="option of options"
       :key="option.value"
       :class="[$style.item]"
-      @click="$emit('update:modelValue', option.value)"
-
       :data-test-selected="modelValue === option.value ? 'selected' : 'not-selected'"
+
       :data-test-value="option.value"
+      @click="$emit('update:modelValue', option.value)"
     >
       <div
-          :class="[
-              $style.checkbox,
-              modelValue === option.value && $style.checkboxChecked
-          ]"
+        :class="[
+          $style.checkbox,
+          modelValue === option.value && $style.checkboxChecked
+        ]"
       >
-        <IconCheck :class="[$style.iconCheck]" v-if="modelValue === option.value" />
+        <IconCheck v-if="modelValue === option.value" :class="[$style.iconCheck]" />
       </div>
       {{ option.label }}
     </div>

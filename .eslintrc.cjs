@@ -1,20 +1,12 @@
 /* eslint-env node */
 module.exports = {
   root: true,
+  env: {
+    browser: true,
+  },
   'extends': [
-    'plugin:vue/vue3-essential',
-    'eslint:recommended'
-  ],
-  overrides: [
-    {
-      files: [
-        'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}',
-        'cypress/support/**/*.{js,ts,jsx,tsx}'
-      ],
-      'extends': [
-        'plugin:cypress/recommended'
-      ]
-    }
+    '@nuxtjs',
+    'plugin:vue/vue3-recommended',
   ],
   parserOptions: {
     ecmaVersion: 'latest'

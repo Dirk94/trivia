@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import AppLogo from "@/components/Logo.vue";
+import AppLogo from '@/components/Logo.vue'
 </script>
 <template>
   <div :class="[$style.container]">

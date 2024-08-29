@@ -3,10 +3,10 @@
     <h1 :class="[$style.logo]">
       Crazy Trivia
       <img
-          src="@/assets/images/homerun-guys.webp"
-          :class="[$style.logoImage]"
-          alt="illustration of 3 faces"
-      />
+        src="@/assets/images/homerun-guys.webp"
+        :class="[$style.logoImage]"
+        alt="illustration of 3 faces"
+      >
     </h1>
   </div>
 </template>
