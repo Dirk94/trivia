@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useQuizStore } from '@/stores/quiz.js'
 import CheckboxGroup from '@/components/CheckboxGroup/CheckboxGroup.vue'
 import AppButton from '@/components/AppButton.vue'
+import ProgressSlider from '@/components/ProgressSlider.vue'
 
 const quizStore = useQuizStore()
 
@@ -10,16 +11,21 @@ const answer = ref('')
 
 const onSubmitAnswer = () => {
   if (answer.value === quizStore.currentCorrectAnswer) {
-    alert('Yes!')
+    // todo
   } else {
-    alert('No!')
+    // todo
   }
 
-  quizStore.currentQuestionIndex++
+  quizStore.gotoNextQuestion()
 }
 </script>
 <template>
   <main>
+    <div :class="[$style.progress]">
+      <p>Question {{ quizStore.currentQuestionIndex + 1 }} of {{ quizStore.questions?.length }}</p>
+      <ProgressSlider :progress="quizStore.progress" />
+    </div>
+
     <!--
       v-html, an XSS vulnerability.
       We could also install a library to safely decode html encoded strings so that we don't need to use v-html.
@@ -55,5 +61,16 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.progress {
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+.progress p {
+  font-size: 14px;
+  margin-bottom: 4px;
+  text-align: center;
+  opacity: 0.8;
 }
 </style>

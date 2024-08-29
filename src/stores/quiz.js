@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { getQuestionsFromApi } from '@/app/triviaApi.js'
+import router from '@/router/index.js'
 
 export const DIFFICULTY_EASY = 'easy'
 export const DIFFICULTY_MEDIUM = 'medium'
@@ -15,7 +16,14 @@ export const useQuizStore = defineStore('quiz', {
   actions: {
     async loadQuestionsForNewQuiz () {
       this.questions = await getQuestionsFromApi(this.difficulty)
-      this.currentQuestionindex = 0
+      this.currentQuestionIndex = 0
+    },
+    async gotoNextQuestion () {
+      this.currentQuestionIndex++
+      if (this.currentQuestionIndex >= this.questions.length) {
+        alert('You finished the quiz!')
+        await router.push('/')
+      }
     }
   },
   getters: {
@@ -32,6 +40,9 @@ export const useQuizStore = defineStore('quiz', {
     },
     currentCorrectAnswer (state) {
       return this.currentQuestion?.correct_answer
+    },
+    progress (state) {
+      return state.currentQuestionIndex / state.questions?.length * 100
     }
   }
 })
