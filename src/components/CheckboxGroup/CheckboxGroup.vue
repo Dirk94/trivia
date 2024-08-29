@@ -22,12 +22,17 @@ defineEmits(['update:modelValue'])
       :key="option.value"
       :class="[$style.item]"
       :data-test-selected="modelValue === option.value ? 'selected' : 'not-selected'"
-
       :data-test-value="option.value"
       @click="$emit('update:modelValue', option.value)"
     >
       <Checkbox :checked="modelValue === option.value" />
-      {{ option.label }}
+
+      <!--
+        v-html, an XSS vulnerability.
+        We could also install a library to safely decode html encoded strings so that we don't need to use v-html.
+        For now that's too much trouble and we are going to trust the Trivia API data.
+      -->
+      <span v-html="option.label" />
     </div>
   </div>
 </template>
