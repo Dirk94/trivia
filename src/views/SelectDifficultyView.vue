@@ -1,0 +1,34 @@
+<script setup>
+import CheckboxGroup from "@/components/CheckboxGroup.vue";
+import {DIFFICULTY_EASY, DIFFICULTY_HARD, DIFFICULTY_MEDIUM, useQuizStore} from "@/stores/quiz.js";
+
+const quizStore = useQuizStore()
+
+</script>
+<template>
+  <main>
+    <p :class="[$style.intro]">
+      Select your difficulty
+    </p>
+
+    <CheckboxGroup
+      v-model="quizStore.difficulty"
+      :options="[
+          { value: DIFFICULTY_EASY, label: 'Easy 💁🏻‍♂️' },
+          { value: DIFFICULTY_MEDIUM, label: 'Medium 😎' },
+          { value: DIFFICULTY_HARD, label: 'Hard 😵' },
+      ]"
+    >
+    </CheckboxGroup>
+  </main>
+</template>
+<style module>
+main {
+  margin-top: 20px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 20px;
+}
+</style>

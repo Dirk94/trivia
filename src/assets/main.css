@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'GT Walsheim';
+    src: url('@/assets/fonts/GT-Walsheim-Ultra-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: url('@/assets/fonts/GT-America-Medium.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: url('@/assets/fonts/GT-America-Standard.otf') format('opentype');
+    font-weight: normal;
+}
+
+:root {
+    --color-text: #2d2323;
+
+    --color-primary: rgb(79, 117, 254);
+    --color-secondary: #FF7F11;
+    --color-white: #ffffff;
+    --color-input-active: #4376f9;
+    --color-box-shadow: #b4a6a640;
+
+    --color-gray-200: rgb(250,248,244);
+    --color-gray-400: rgb(239,238,234);
+
+    --transition: .15s ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-white);
+    transition:
+            color 0.5s,
+            background-color 0.5s;
+    line-height: 1.6;
+    font-family: 'GT America', sans-serif;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: "GT Walsheim", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--color-text);
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 120%;
+}
+
+p {
+    font-size: 22px;
+    line-height: 140%;
+    font-weight: normal;
+}
